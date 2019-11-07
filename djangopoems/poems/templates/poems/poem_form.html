@@ -1,0 +1,17 @@
+{% extends parent_template|default:"poems/poem_base.html" %}
+
+{% block title %}
+  {{ block.super }} - Add New Poem
+{% endblock title %}
+
+{% block content %}
+  <div>
+    <div>
+      <form action="{% url 'poem_create' %}" method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" name="button">Create Poem</button>
+      </form>
+    </div>
+  </div>
+{% endblock content %}

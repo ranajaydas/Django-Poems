@@ -1,0 +1,20 @@
+{% extends parent_template|default:"poems/poem_base.html" %}
+
+{% block title %}
+{{ block.super }} - Delete Poem
+{% endblock %}
+
+{% block content %}
+  <div>
+    <div>
+      <form action="{{ poem.get_delete_url }}" method="post">
+        {% csrf_token %}
+        <p>
+          Are you sure you want to delete the poem titled {{ poem.title }}?
+        </p>
+        <a href="{{ poem.get_absolute_url }}">Cancel</a>
+        <button type="submit">Delete Poem</button>
+      </form>
+    </div>
+  </div>
+{% endblock %}
